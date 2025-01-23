@@ -1,0 +1,427 @@
+--- START OF FILE index.html ---
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niteesh Pujari - Cybersecurity Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+        <style>
+        /* Add these new styles */
+        .hover-tilt {
+            @apply transition-transform duration-300 hover:-rotate-1;
+        }
+        .skill-progress {
+            transition: width 1s ease-in-out;
+        }
+        .animate-progress {
+            width: var(--progress-width);
+        }
+        .project-tag {
+            @apply inline-block px-2 py-1 rounded-full text-xs font-medium mr-2;
+        }
+        .tooltip {
+            @apply invisible absolute bg-gray-900 text-white px-3 py-2 rounded-lg text-sm;
+        }
+        .has-tooltip:hover .tooltip {
+            @apply visible;
+        }
+        /* Add these new styles */
+        .certification-card {
+            @apply bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-2;
+        }
+        .glow-effect {
+            @apply relative overflow-hidden;
+        }
+        .glow-effect::before {
+            @apply content-[''] absolute top-0 left-0 w-full h-full opacity-0 transition-opacity duration-300;
+            background: radial-gradient(600px circle at var(--x) var(--y), rgba(59,130,246,0.1), transparent 40%);
+        }
+        .glow-effect:hover::before {
+            @apply opacity-100;
+        }
+        .animated-underline {
+            @apply relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-600 after:transition-all after:duration-300 hover:after:w-full;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Animated Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#hero" class="text-xl font-bold text-gray-800 hover:text-blue-600 transition-colors animated-underline">
+                <i class="fas fa-shield-alt mr-2"></i>Niteesh Pujari
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#experience" class="nav-link relative group">
+                    Experience
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#skills" class="nav-link relative group">
+                    Skills
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#projects" class="nav-link relative group">
+                    Projects
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#certifications" class="nav-link relative group">
+                    Certifications
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#contact" class="nav-link relative group">
+                    Contact
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Hero Section with Particles -->
+    <header id="hero" class="relative h-screen flex items-center justify-center glow-effect"> <!-- glow-effect added here -->
+        <div id="particles-js" class="absolute inset-0"></div>
+        <div class="text-center relative z-10">
+            <div class="w-32 h-32 bg-blue-100 rounded-full mx-auto mb-6 flex items-center justify-center hover-tilt">
+                <i class="fas fa-user-secret text-blue-600 text-4xl"></i>
+            </div>
+            <h1 class="text-5xl font-bold mb-4">Niteesh Pujari</h1>
+            <p class="text-xl text-gray-600 mb-8">Cybersecurity Specialist</p>
+            <div class="flex justify-center gap-4">
+                <a href="#contact" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors btn-primary">  <!-- btn-primary class here -->
+                    <i class="fas fa-envelope mr-2"></i>Contact Me
+                </a>
+                <a href="#projects" class="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors btn-secondary"> <!-- btn-secondary class here -->
+                    <i class="fas fa-code-branch mr-2"></i>View Projects
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Work Experience Section (as before) -->
+    <section class="py-20 bg-white" id="experience">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Professional Journey</h2>
+            <div class="relative max-w-3xl mx-auto">
+                <div class="absolute left-1/2 w-1 bg-gray-200 h-full -translate-x-1/2"></div>
+
+                <!-- Timeline Item 1: Cyber Security Research Engineer -->
+                <div class="relative pl-16 mb-12 timeline-item group">
+                    <div class="timeline-dot animate-pulse"></div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow transform group-hover:translate-x-2">
+                        <div class="flex items-center mb-3">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-search text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-semibold">Cyber Security Research Engineer</h3>
+                                <p class="text-gray-600">EC-Council</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <i class="fas fa-calendar-alt mr-2"></i>2023
+                            <span class="mx-4">|</span>
+                            <i class="fas fa-map-marker-alt mr-2"></i>Hyderabad, Telangana
+                        </div>
+                        <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                            <li class="list-item">Spearheaded research on hacking, penetration testing, and computer forensics.</li>
+                            <li class="list-item">Developed deployable pentest case studies for practical learning.</li>
+                            <li class="list-item">Built CTFs with latest vulnerabilities for educational purposes.</li>
+                            <li class="list-item">Created red/blue team exercises to enhance offensive/defensive skills.</li>
+                            <li class="list-item">Authored research papers and participated in technical discussions.</li>
+                        </ul>
+                         <!-- Skill tags -->
+                         <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="project-tag bg-blue-100 text-blue-800">Penetration Testing</span>
+                            <span class="project-tag bg-purple-100 text-purple-800">CTF Development</span>
+                            <span class="project-tag bg-green-100 text-green-800">Research</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2: Cyber Security Training -->
+                <div class="relative pl-16 mb-12 timeline-item group">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow transform group-hover:translate-x-2">
+                        <div class="flex items-center mb-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-graduation-cap text-green-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-semibold">Cyber Security Training</h3>
+                                <p class="text-gray-600">Networkers Home</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <i class="fas fa-calendar-alt mr-2"></i>2022 - 2023
+                            <span class="mx-4">|</span>
+                            <i class="fas fa-map-marker-alt mr-2"></i>Hyderabad, Telangana
+                        </div>
+                        <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                            <li class="list-item">Comprehensive Cyber Security training program.</li>
+                            <li class="list-item">Hands-on labs and real-world simulations.</li>
+                            <li class="list-item">Focused on core cybersecurity skills and knowledge.</li>
+                        </ul>
+                         <!-- Skill tags -->
+                         <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="project-tag bg-yellow-100 text-yellow-800">Training</span>
+                            <span class="project-tag bg-teal-100 text-teal-800">Skill Development</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more timeline items if needed -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Sections (as before) -->
+    <section class="mb-8 container mx-auto px-4 py-16" id="skills">
+        <h2 class="text-4xl font-bold mb-4 text-center">Technical Expertise</h2>
+        <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Skill Card 1: Cybersecurity -->
+            <div class="skill-card relative group glow-effect">  <!-- glow-effect class added -->
+                <div class="absolute inset-0 bg-blue-500 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                <div class="relative p-6 rounded-lg shadow-md hover:shadow-lg">
+                    <div class="text-blue-600 text-2xl mb-2 has-tooltip">
+                        <i class="fas fa-shield-alt"></i>
+                        <span class="tooltip -top-8 left-1/2 -translate-x-1/2">Cybersecurity Expertise</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Cybersecurity</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="skill-meter" style="--progress-width: 90%" data-width="90%">
+                            <div class="skill-progress bg-blue-600 h-2 rounded animate-progress"></div>
+                        </div>
+                        <span class="text-sm text-gray-600 ml-2">90%</span>
+                    </div>
+                </div>
+            </div>
+             <!-- Skill Card 2: Penetration Testing -->
+             <div class="skill-card relative group glow-effect">  <!-- glow-effect class added -->
+                <div class="absolute inset-0 bg-purple-500 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                <div class="relative p-6 rounded-lg shadow-md hover:shadow-lg">
+                    <div class="text-purple-600 text-2xl mb-2 has-tooltip">
+                        <i class="fas fa-bug"></i>
+                        <span class="tooltip -top-8 left-1/2 -translate-x-1/2">Penetration Testing</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Penetration Testing</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="skill-meter" style="--progress-width: 85%" data-width="85%">
+                            <div class="skill-progress bg-purple-600 h-2 rounded animate-progress"></div>
+                        </div>
+                        <span class="text-sm text-gray-600 ml-2">85%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill Card 3: Malware Analysis -->
+            <div class="skill-card relative group glow-effect">  <!-- glow-effect class added -->
+                <div class="absolute inset-0 bg-red-500 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                <div class="relative p-6 rounded-lg shadow-md hover:shadow-lg">
+                    <div class="text-red-600 text-2xl mb-2 has-tooltip">
+                        <i class="fas fa-virus"></i>
+                        <span class="tooltip -top-8 left-1/2 -translate-x-1/2">Malware Analysis</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Malware Analysis</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="skill-meter" style="--progress-width: 80%" data-width="80%">
+                            <div class="skill-progress bg-red-600 h-2 rounded animate-progress"></div>
+                        </div>
+                        <span class="text-sm text-gray-600 ml-2">80%</span>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Skill Card 4: Digital Forensics -->
+             <div class="skill-card relative group glow-effect">  <!-- glow-effect class added -->
+                <div class="absolute inset-0 bg-teal-500 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                <div class="relative p-6 rounded-lg shadow-md hover:shadow-lg">
+                    <div class="text-teal-600 text-2xl mb-2 has-tooltip">
+                        <i class="fas fa-fingerprint"></i>
+                        <span class="tooltip -top-8 left-1/2 -translate-x-1/2">Digital Forensics</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Digital Forensics</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="skill-meter" style="--progress-width: 75%" data-width="75%">
+                            <div class="skill-progress bg-teal-600 h-2 rounded animate-progress"></div>
+                        </div>
+                        <span class="text-sm text-gray-600 ml-2">75%</span>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Skill Card 5: Threat Hunting -->
+             <div class="skill-card relative group glow-effect">  <!-- glow-effect class added -->
+                <div class="absolute inset-0 bg-orange-500 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                <div class="relative p-6 rounded-lg shadow-md hover:shadow-lg">
+                    <div class="text-orange-600 text-2xl mb-2 has-tooltip">
+                        <i class="fas fa-binoculars"></i>
+                        <span class="tooltip -top-8 left-1/2 -translate-x-1/2">Threat Hunting</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Threat Hunting</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="skill-meter" style="--progress-width: 70%" data-width="70%">
+                            <div class="skill-progress bg-orange-600 h-2 rounded animate-progress"></div>
+                        </div>
+                        <span class="text-sm text-gray-600 ml-2">70%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill Card 6: Scripting & Programming -->
+            <div class="skill-card relative group glow-effect">  <!-- glow-effect class added -->
+                <div class="absolute inset-0 bg-lime-500 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                <div class="relative p-6 rounded-lg shadow-md hover:shadow-lg">
+                    <div class="text-lime-600 text-2xl mb-2 has-tooltip">
+                        <i class="fas fa-code"></i>
+                        <span class="tooltip -top-8 left-1/2 -translate-x-1/2">Scripting & Programming</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Scripting & Programming</h3>
+                    <div class="flex items-center mb-2">
+                        <div class="skill-meter" style="--progress-width: 60%" data-width="60%">
+                            <div class="skill-progress bg-lime-600 h-2 rounded animate-progress"></div>
+                        </div>
+                        <span class="text-sm text-gray-600 ml-2">60%</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Projects Section (as before) -->
+    <section class="mb-8 container mx-auto px-4 py-16 bg-gray-50" id="projects">
+        <h2 class="text-3xl font-bold mb-4 text-center">Projects</h2>
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Project Card 1 -->
+            <div class="project-item relative group glow-effect">  <!-- glow-effect class added -->
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg blur opacity-25 group-hover:opacity-40 transition-opacity"></div>
+                <div class="relative bg-white p-6 rounded-lg shadow-md hover:shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="project-title">E-commerce Security Assessment</h4>
+                        <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Critical Findings</span>
+                    </div>
+                    <p class="text-gray-600">Conducted black-box penetration test, identified critical vulnerabilities like SQL Injection and XSS, provided remediation steps.</p>
+                     <!-- Technology Stack -->
+                     <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="project-tag bg-gray-100 text-gray-800">
+                            <i class="fab fa-linux mr-1"></i>Kali Linux
+                        </span>
+                        <span class="project-tag bg-gray-100 text-gray-800">
+                            <i class="fas fa-tools mr-1"></i>Burp Suite
+                        </span>
+                        <span class="project-tag bg-gray-100 text-gray-800">
+                            <i class="fas fa-file-alt mr-1"></i>Report Writing
+                        </span>
+                    </div>
+                    <!-- Project Metrics -->
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span><i class="fas fa-clock mr-1"></i>2 weeks</span>
+                        <span><i class="fas fa-bug mr-1"></i>12 vulnerabilities</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="project-item relative group glow-effect">  <!-- glow-effect class added -->
+                <div class="absolute -inset-1 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg blur opacity-25 group-hover:opacity-40 transition-opacity"></div>
+                <div class="relative bg-white p-6 rounded-lg shadow-md hover:shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="project-title">Small Business Network Security</h4>
+                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Completed</span>
+                    </div>
+                    <p class="text-gray-600">Internal network vulnerability scan and penetration test for small business, identified risks and hardening measures.</p>
+                     <!-- Technology Stack -->
+                     <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="project-tag bg-gray-100 text-gray-800">
+                            <i class="fab fa-windows mr-1"></i>Windows Server
+                        </span>
+                        <span class="project-tag bg-gray-100 text-gray-800">
+                            <i class="fas fa-network-wired mr-1"></i>Nessus
+                        </span>
+                        <span class="project-tag bg-gray-100 text-gray-800">
+                            <i class="fas fa-shield-alt mr-1"></i>Firewall Config
+                        </span>
+                    </div>
+                    <!-- Project Metrics -->
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span><i class="fas fa-clock mr-1"></i>1 week</span>
+                        <span><i class="fas fa-check mr-1"></i>50+ endpoints secured</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="project-item relative group glow-effect">  <!-- glow-effect class added -->
+                <div class="absolute -inset-1 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg blur opacity-25 group-hover:opacity-40 transition-opacity"></div>
+                <div class="relative bg-white p-6 rounded-lg shadow-md hover:shadow-lg">
+                    <h4 class="project-title">Android App Security Testing</h4>
+                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Personal Project</span>
+                    <p class="text-gray-600">Penetration testing on Android mobile app, identified insecure data storage, API key exposure, documented findings.</p>
+                     <!-- Technology Stack -->
+                     <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="project-tag bg-gray-100 text-gray-800">
+                            <i class="fab fa-android mr-1"></i>Android
+                        </span>
+                        <span class="project-tag bg-gray-100 text-gray-800">
+                            <i class="fas fa-mobile-alt mr-1"></i>Mobile Security
+                        </span>
+                        <span class="project-tag bg-gray-100 text-gray-800">
+                            <i class="fas fa-file-alt mr-1"></i>Documentation
+                        </span>
+                    </div>
+                    <!-- Project Metrics -->
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span><i class="fas fa-clock mr-1"></i>Ongoing</span>
+                        <span><i class="fas fa-user-graduate mr-1"></i>Learning Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section (as before) -->
+    <section class="mb-8 container mx-auto px-4 py-16" id="certifications">
+        <h2 class="text-3xl font-bold mb-4 text-center">Certifications</h2>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <ul class="list-disc list-inside">
+                <li>CCNA - 200 - 301 - Networkers Home</li>
+                <li>CCT (Certified Cybersecurity Technician) - Networkers Home</li>
+                <li>CEH (Certified Ethical Hacker) - Networkers Home</li>
+                <li>Linux Fundamentals - Networkers Home</li>
+                <li>Fortigate Firewall - Networkers Home</li>
+                <li>Python Scripting - Networkers Home</li>
+                <li>PEN Testing- LPT - Networkers Home</li>
+                <li>Bug Bounty Hunting - Networkers Home</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section (as before) -->
+    <footer class="bg-gray-800 text-white py-8" id="contact">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Contact Me</h2>
+            <p class="text-gray-400 mb-8">I'm open to discuss cybersecurity opportunities. Feel free to reach out!</p>
+            <!-- Contact Form -->
+            <form class="max-w-md mx-auto mb-8">
+                <input type="email" placeholder="Your email" class="w-full mb-4 px-4 py-2 rounded-lg text-gray-800">
+                <textarea placeholder="Message" class="w-full mb-4 px-4 py-2 rounded-lg h-32 text-gray-800"></textarea>
+                <button class="btn-primary hover-tilt">
+                    <i class="fas fa-paper-plane mr-2"></i>Send Message
+                </button>
+            </form>
+            <!-- Download Resume QR Code -->
+            <div class="mt-8">
+                <p class="mb-2">Scan to download resume</p>
+                <a href="resume.pdf" download>
+                    <img src="images/qrcode-resume.png" alt="QR Code" class="w-32 h-32 mx-auto hover-tilt">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

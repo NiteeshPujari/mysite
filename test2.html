@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" >
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Niteesh Pujari - Cybersecurity Portfolio</title> <!-- Updated title -->
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+        document.documentElement.classList.add('js');
+    </script>
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Font Awesome -->
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Add these new styles from code2 <style> block */
+        .hover-tilt {
+            @apply transition-transform duration-300 hover:-rotate-1;
+        }
+        .skill-progress {
+            transition: width 1s ease-in-out;
+        }
+        .animate-progress {
+            width: var(--progress-width);
+        }
+        .project-tag {
+            @apply inline-block px-2 py-1 rounded-full text-xs font-medium mr-2;
+        }
+        .tooltip {
+            @apply invisible absolute bg-gray-900 text-white px-3 py-2 rounded-lg text-sm;
+        }
+        .has-tooltip:hover .tooltip {
+            @apply visible;
+        }
+        /* Add these new styles */
+        .certification-card {
+            @apply bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-2;
+        }
+        .glow-effect {
+            @apply relative overflow-hidden;
+        }
+        .glow-effect::before {
+            @apply content-[''] absolute top-0 left-0 w-full h-full opacity-0 transition-opacity duration-300;
+            background: radial-gradient(600px circle at var(--x) var(--y), rgba(59,130,246,0.1), transparent 40%);
+        }
+        .glow-effect:hover::before {
+            @apply opacity-100;
+        }
+        .animated-underline {
+            @apply relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-600 after:transition-all after:duration-300 hover:after:w-full;
+        }
+        /* Additional Styles to integrate with Code1 layout */
+        .container {
+            @apply mx-auto max-w-screen-xl px-4; /* Adjust max-w if needed to match Code1's layout */
+        }
+        .section-header {
+            @apply mb-12 text-center;
+        }
+        .section-header .text-display-title {
+            @apply text-4xl font-bold; /* Adjust size if needed */
+        }
+        .grid-list-items {
+            @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6; /* Example grid for skills/certifications */
+        }
+        .grid-list-items__item {
+            @apply bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-2; /* Example card style */
+        }
+        .s-about__block-title, .s-works .section-header .text-display-title, .s-footer .section-header .text-display-title {
+            @apply text-3xl font-bold mb-4; /* Example title style */
+        }
+        .s-about__list li {
+            @apply mb-4; /* Example list item spacing */
+        }
+        .s-about__list li span {
+            @apply block text-gray-600 text-sm; /* Example date/location style */
+        }
+        .s-about__list li p {
+            @apply text-gray-700 mt-2; /* Example description style */
+        }
+
+    </style>
+
+
+</head>
+
+
+<body id="top" class="bg-gray-50"> <!-- Added bg-gray-50 from code2 body class -->
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <!-- page wrap
+    ================================================== -->
+    <div id="page" class="s-pagewrap">
+
+
+        <!-- # site header
+        ================================================== -->
+        <header class="s-header bg-white shadow-sm sticky top-0 z-50"> <!-- Added classes from code2 nav -->
+            <div class="row s-header__inner container mx-auto px-4 py-3 flex justify-between items-center"> <!-- Added container and flex classes -->
+
+                <div class="s-header__block">
+                    <div class="s-header__logo">
+                        <a class="logo text-xl font-bold text-gray-800 hover:text-blue-600 transition-colors animated-underline" href="#hero"> <!-- Updated logo link and classes -->
+                            <!-- You can replace logo.svg with a text logo if needed -->
+                            <i class="fas fa-shield-alt mr-2"></i>Niteesh Pujari <!-- Text logo with icon -->
+                        </a>
+                    </div>
+
+                    <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
+                </div> <!-- end s-header__block -->
+
+                <nav class="s-header__nav">
+                    <ul class="s-header__menu-links hidden md:flex space-x-6"> <!-- Added classes from code2 nav links -->
+                        <li class="current"><a class="smoothscroll nav-link relative group" href="#intro">
+                            Intro
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                        </a></li>
+                        <li><a class="smoothscroll nav-link relative group" href="#about">
+                            Experience
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                        </a></li>
+                        <li><a class="smoothscroll nav-link relative group" href="#works">
+                            Projects
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                        </a></li>
+                        <li><a class="smoothscroll nav-link relative group" href="#certifications"> <!-- Added Certifications link -->
+                            Certifications
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                        </a></li>
+                        <li><a class="smoothscroll nav-link relative group" href="#footer">
+                            Contact
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                        </a></li>
+                    </ul> <!-- s-header__menu-links -->
+                </nav> <!-- end s-header__nav -->
+
+            </div> <!-- end s-header__inner -->
+        </header> <!-- end s-header -->
+
+
+        <!-- # intro
+        ================================================== -->
+        <section id="intro" class="s-intro target-section relative h-screen flex items-center justify-center glow-effect"> <!-- Added classes from code2 hero -->
+             <div id="particles-js" class="absolute inset-0"></div> <!-- Particles JS container -->
+            <div class="row s-intro__content width-sixteen-col text-center relative z-10"> <!-- Added text-center and z-10 classes -->
+                <div class="column lg-12 s-intro__content-inner grid-block grid-16">
+
+                    <div class="s-intro__content-text">
+                        <div class="w-32 h-32 bg-blue-100 rounded-full mx-auto mb-6 flex items-center justify-center hover-tilt">
+                            <i class="fas fa-user-secret text-blue-600 text-4xl"></i>
+                        </div>
+
+                        <div class="s-intro__content-pretitle text-pretitle">Hello</div>
+                        <h1 class="s-intro__content-title text-5xl font-bold mb-4"> <!-- Added text-5xl font-bold mb-4 classes -->
+                        I'm Niteesh Pujari <br>
+                        Cyber Security Professional <br>
+                        Based in Hyderabad, India
+                        </h1>
+
+                        <p class="text-xl text-gray-600 mb-8">Cybersecurity Specialist</p> <!-- Added classes from code2 hero -->
+
+                        <div class="s-intro__content-btns flex justify-center gap-4"> <!-- Added flex justify-center gap-4 classes -->
+                            <a class="smoothscroll btn px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors btn-primary" href="#about">More About Me</a>
+                            <a class="smoothscroll btn btn--stroke px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors btn-secondary" href="#footer">Get In Touch</a>
+                        </div> <!-- s-intro__content-btns -->
+
+                    </div> <!-- s-intro__content-text -->
+
+                </div> <!-- s-intro__content-inner -->
+            </div> <!-- s-intro__content -->
+
+            <ul class="s-intro__social social-list">
+                <li>
+                    <a href="https://linkedin.com/in/niteeshpujari" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M20,3H4C3.447,3,3,3.448,3,4v16c0,0.552,0.447,1,1,1h8.615v-6.96h-2.338v-2.725h2.338v-2c0-2.325,1.42-3.592,3.5-3.592 c0.699-0.002,1.399,0.034,2.095,0.107v2.42h-1.435c-1.128,0-1.348,0.538-1.348,1.325v1.735h2.697l-0.35,2.725h-2.348V21H20 c0.553,0,1-0.448,1-1V4C21,3.448,20.553,3,20,3z"></path></svg>
+                        <span class="u-screen-reader-text">LinkedIn</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809 c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793 c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05 c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032 c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028 c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22 c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z"></path></svg>
+                        <span class="u-screen-reader-text">Twitter</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M11.999,7.377c-2.554,0-4.623,2.07-4.623,4.623c0,2.554,2.069,4.624,4.623,4.624c2.552,0,4.623-2.07,4.623-4.624 C16.622,9.447,14.551,7.377,11.999,7.377L11.999,7.377z M11.999,15.004c-1.659,0-3.004-1.345-3.004-3.003 c0-1.659,1.345-3.003,3.004-3.003s3.002,1.344,3.002,3.003C15.001,13.659,13.658,15.004,11.999,15.004L11.999,15.004z"></path><circle cx="16.806" cy="7.207" r="1.078"></circle><path d="M20.533,6.111c-0.469-1.209-1.424-2.165-2.633-2.632c-0.699-0.263-1.438-0.404-2.186-0.42 c-0.963-0.042-1.268-0.054-3.71-0.054s-2.755,0-3.71,0.054C7.548,3.074,6.809,3.215,6.11,3.479C4.9,3.946,3.945,4.902,3.477,6.111 c-0.263,0.7-0.404,1.438-0.419,2.186c-0.043,0.962-0.056,1.267-0.056,3.71c0,2.442,0,2.753,0.056,3.71 c0.015,0.748,0.156,1.486,0.419,2.187c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45 c0.963,0.042,1.268,0.055,3.71,0.055s2.755,0,3.71-0.055c0.747-0.015,1.486-0.157,2.186-0.419c1.209-0.469,2.164-1.424,2.633-2.633 c0.263-0.7,0.404-1.438,0.419-2.186c0.043-0.962,0.056-1.267,0.056-3.71s0-2.753-0.056-3.71C20.941,7.57,20.801,6.819,20.533,6.111z M19.315,15.643c-0.007,0.576-0.111,1.147-0.311,1.688c-0.305,0.787-0.926,1.409-1.712,1.711c-0.535,0.199-1.099,0.303-1.67,0.311 c-0.95,0.044-1.218,0.055-3.654,0.055c-2.438,0-2.687,0-3.655-0.055c-0.569-0.007-1.135-0.112-1.669-0.311 c-0.789-0.301-1.414-0.923-1.719-1.711c-0.196-0.534-0.302-1.099-0.311-1.669c-0.043-0.95-0.053-1.218-0.053-3.654 c0-2.437,0-2.686,0.053-3.655c0.007-0.576,0.111-1.146,0.311-1.687c0.305-0.789,0.93-1.41,1.719-1.712 c0.534-0.198,1.1-0.303,1.669-0.311c0.951-0.043,1.218-0.055,3.655-0.055c2.437,0,2.687,0,3.654,0.055 c0.571,0.007,1.135,0.112,1.67,0.311c0.786,0.303,1.407,0.925,1.712,1.712c0.196,0.534,0.302,1.099,0.311,1.669 c0.043,0.951,0.054,1.218,0.054,3.655c0,2.436,0,2.698-0.043,3.654H19.315z"></path></svg>
+                        <span class="u-screen-reader-text">Instagram</span>
+                    </a>
+                </li>
+            </ul> <!-- end s-intro__social -->
+
+            <div class="s-intro__content-media">
+                <img src="images/intro-bg.jpg" srcset="images/intro-bg.jpg 1x, images/intro-bg.jpg 2x" alt="">
+            </div> <!-- s-intro__content-media -->
+
+            <div class="s-intro__btn-download">
+                <a class="btn btn--stroke" href="#0">Download CV</a>
+            </div> <!-- end s-intro__btn-download -->
+
+            <div class="s-intro__scroll-down">
+                <a href="#about" class="smoothscroll">
+                    <div class="scroll-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z"></path></svg>
+                    </div>
+                    <span class="scroll-text u-screen-reader-text">Scroll Down</span>
+                </a>
+            </div> <!-- s-intro__scroll-down -->
+
+        </section> <!-- end s-intro -->
+
+
+        <!-- # about
+        ================================================== -->
+        <section id="about" class="s-about target-section py-20 bg-white"> <!-- Added classes from code2 experience section -->
+            <div class="container mx-auto px-4"> <!-- Added container from code2 -->
+                <div class="row s-about__content">
+                    <div class="column xl-12">
+
+                        <div class="section-header" data-num="01">
+                            <h2 class="text-display-title">Professional Journey.</h2> <!-- Changed title to Journey -->
+                        </div> <!-- end section-header -->
+
+                        <div class="relative max-w-3xl mx-auto">
+                            <div class="absolute left-1/2 w-1 bg-gray-200 h-full -translate-x-1/2"></div>
+
+                            <!-- Timeline Item 1: Cyber Security Research Engineer -->
+                            <div class="relative pl-16 mb-12 timeline-item group">
+                                <div class="timeline-dot animate-pulse"></div>
+                                <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow transform group-hover:translate-x-2">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                            <i class="fas fa-search text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-2xl font-semibold">Cyber Security Research Engineer</h3>
+                                            <p class="text-gray-600">EC-Council</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                                        <i class="fas fa-calendar-alt mr-2"></i>2023
+                                        <span class="mx-4">|</span>
+                                        <i class="fas fa-map-marker-alt mr-2"></i>Hyderabad, Telangana
+                                    </div>
+                                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                                        <li class="list-item">Spearheaded research on hacking, penetration testing, and computer forensics.</li>
+                                        <li class="list-item">Developed deployable pentest case studies for practical learning.</li>
+                                        <li class="list-item">Built CTFs with latest vulnerabilities for educational purposes.</li>
+                                        <li class="list-item">Created red/blue team exercises to enhance offensive/defensive skills.</li>
+                                        <li class="list-item">Authored research papers and participated in technical discussions.</li>
+                                    </ul>
+                                     <!-- Skill tags -->
+                                     <div class="flex flex-wrap gap-2 mt-4">
+                                        <span class="project-tag bg-blue-100 text-blue-800">Penetration Testing</span>
+                                        <span class="project-tag bg-purple-100 text-purple-800">CTF Development</span>
+                                        <span class="project-tag bg-green-100 text-green-800">Research</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Timeline Item 2: Cyber Security Training -->
+                            <div class="relative pl-16 mb-12 timeline-item group">
+                                <div class="timeline-dot"></div>
+                                <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow transform group-hover:translate-x-2">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                            <i class="fas fa-graduation-cap text-green-600"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-2xl font-semibold">Cyber Security Training</h3>
+                                            <p class="text-gray-600">Networkers Home</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                                        <i class="fas fa-calendar-alt mr-2"></i>2022 - 2023
+                                        <span class="mx-4">|</span>
+                                        <i class="fas fa-map-marker-alt mr-2"></i>Hyderabad, Telangana
+                                    </div>
+                                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                                        <li class="list-item">Comprehensive Cyber Security training program.</li>
+                                        <li class="list-item">Hands-on labs and real-world simulations.</li>
+                                        <li class="list-item">Focused on core cybersecurity skills and knowledge.</li>
+                                    </ul>
+                                     <!-- Skill tags -->
+                                     <div class="flex flex-wrap gap-2 mt-4">
+                                        <span class="project-tag bg-yellow-100 text-yellow-800">Training</span>
+                                        <span class="project-tag bg-teal-100 text-teal-800">Skill Development</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Add more timeline items if needed -->
+                        </div>
+
+
+                    </div> <!--end column -->
+                </div> <!--end s-about__content -->
+            </div> <!-- container from code2 -->
+        </section> <!-- end s-about -->
+
+        <!-- Skills Section -->
+        <section class="mb-8 container mx-auto px-4 py-16" id="skills">
+            <div class="row">
+                <div class="column xl-12">
+                    <div class="section-header" data-num="02">
+                        <h2 class="text-display-title">Technical Expertise.</h2>
+                    </div> <!-- end section-header -->
+                </div>
+            </div>
+            <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Skill Card 1: Cybersecurity -->
+                <div class="skill-card relative group glow-effect">  <!-- glow-effect class added -->
+                    <div class="absolute inset-0 bg-blue-500 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                    <div class="relative p-6 rounded-lg shadow-md hover:shadow-lg">
+                        <div class="text-blue-600 text-2xl mb-2 has-tooltip">
+                            <i class="fas fa-shield-alt"></i>
+                            <span class="tooltip -top-8 left-1/2 -translate-x-1/2">Cybersecurity Expertise</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Cybersecurity</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="skill-meter" style="--progress-width: 90%" data-width="90%">
+                                <div class="skill-progress bg-blue-600 h-2 rounded animate-progress"></div>
+                            </div>
+                            <span class="text-sm text-gray-600 ml-2">90%</span>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Skill Card 2: Penetration Testing -->
+                 <div class="skill-card relative group glow-effect">  <!-- glow-effect class added -->
+                    <div class="absolute inset-0 bg-purple-500 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                    <div class="relative p-6 rounded-lg shadow-md hover:shadow-lg">
+                        <div class="text-purple-600 text-2xl mb-2 has-tooltip">
+                            <i class="fas fa-bug"></i>
+                            <span class="tooltip -top-8 left-1/2 -translate-x-1/2">Penetration Testing</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Penetration Testing</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="skill-meter" style="--progress-width: 85%" data-width="85%">
+                                <div class="skill-progress bg-purple-600 h-2 rounded animate-progress"></div>
+                            </div>
+                            <span class="text-sm text-gray-600 ml-2">85%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 3: Malware Analysis -->
+                <div class="skill-card relative group glow-effect">  <!-- glow-effect class added -->
+                    <div class="absolute inset-0 bg-red-500 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                    <div class="relative p-6 rounded-lg shadow-md hover:shadow-lg">
+                        <div class="text-red-600 text-2xl mb-2 has-tooltip">
+                            <i class="fas fa-virus"></i>
+                            <span class="tooltip -top-8 left-1/2 -translate-x-1/2">Malware Analysis</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Malware Analysis</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="skill-meter" style="--progress-width: 80%" data-width="80%">
+                                <div class="skill-progress bg-red-600 h-2 rounded animate-progress"></div>
+                            </div>
+                            <span class="text-sm text-gray-600 ml-2">80%</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Skill Card 4: Digital Forensics -->
+                 <div class="skill-card relative group glow-effect">  <!-- glow-effect class added -->
+                    <div class="absolute inset-0 bg-teal-500 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                    <div class="relative p-6 rounded-lg shadow-md hover:shadow-lg">
+                        <div class="text-teal-600 text-2xl mb-2 has-tooltip">
+                            <i class="fas fa-fingerprint"></i>
+                            <span class="tooltip -top-8 left-1/2 -translate-x-1/2">Digital Forensics</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Digital Forensics</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="skill-meter" style="--progress-width: 75%" data-width="75%">
+                                <div class="skill-progress bg-teal-600 h-2 rounded animate-progress"></div>
+                            </div>
+                            <span class="text-sm text-gray-600 ml-2">75%</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Skill Card 5: Threat Hunting -->
+                 <div class="skill-card relative group glow-effect">  <!-- glow-effect class added -->
+                    <div class="absolute inset-0 bg-orange-500 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                    <div class="relative p-6 rounded-lg shadow-md hover:shadow-lg">
+                        <div class="text-orange-600 text-2xl mb-2 has-tooltip">
+                            <i class="fas fa-binoculars"></i>
+                            <span class="tooltip -top-8 left-1/2 -translate-x-1/2">Threat Hunting</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Threat Hunting</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="skill-meter" style="--progress-width: 70%" data-width="70%">
+                                <div class="skill-progress bg-orange-600 h-2 rounded animate-progress"></div>
+                            </div>
+                            <span class="text-sm text-gray-600 ml-2">70%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 6: Scripting & Programming -->
+                <div class="skill-card relative group glow-effect">  <!-- glow-effect class added -->
+                    <div class="absolute inset-0 bg-lime-500 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                    <div class="relative p-6 rounded-lg shadow-md hover:shadow-lg">
+                        <div class="text-lime-600 text-2xl mb-2 has-tooltip">
+                            <i class="fas fa-code"></i>
+                            <span class="tooltip -top-8 left-1/2 -translate-x-1/2">Scripting & Programming</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Scripting & Programming</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="skill-meter" style="--progress-width: 60%" data-width="60%">
+                                <div class="skill-progress bg-lime-600 h-2 rounded animate-progress"></div>
+                            </div>
+                            <span class="text-sm text-gray-600 ml-2">60%</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- # works - Changed to Projects
+        ================================================== -->
+        <section id="works" class="s-works target-section mb-8 container mx-auto px-4 py-16 bg-gray-50"> <!-- Added classes from code2 projects -->
+
+            <div class="row">
+                <div class="column xl-12">
+                    <div class="section-header" data-num="03">
+                        <h2 class="text-display-title">Projects.</h2> <!-- Changed section title to Projects -->
+                    </div> <!-- end section-header -->
+                </div>
+            </div>
+
+            <div class="row folio-entries max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8"> <!-- Added grid classes from code2 projects -->
+
+                <div class="column entry project-item relative group glow-effect"> <!-- Added project item classes -->
+                    <!-- Project 1 -->
+                    <div class="entry__link"> <!-- Removed <a> tag and glightbox as project details are now text -->
+                        <div class="entry__thumb">
+                            <img src="images/folio/project_blockchain_healthcare.jpg" alt="Blockchain Healthcare Project"> <!-- Placeholder image -->
+                        </div>
+                        <div class="entry__info">
+                            <h4 class="entry__title project-title">E-commerce Security Assessment</h4> <!-- Project title and classes -->
+                            <div class="entry__cat"><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Critical Findings</span></div> <!-- Project badge -->
+                        </div>
+                    </div>
+
+                    <div class="entry__desc-01"> <!-- Removed glightbox-desc class as it's not needed anymore -->
+                        <p class="text-gray-600">Conducted black-box penetration test, identified critical vulnerabilities like SQL Injection and XSS, provided remediation steps.</p> <!-- Project description -->
+                         <!-- Technology Stack -->
+                         <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="project-tag bg-gray-100 text-gray-800">
+                                <i class="fab fa-linux mr-1"></i>Kali Linux
+                            </span>
+                            <span class="project-tag bg-gray-100 text-gray-800">
+                                <i class="fas fa-tools mr-1"></i>Burp Suite
+                            </span>
+                            <span class="project-tag bg-gray-100 text-gray-800">
+                                <i class="fas fa-file-alt mr-1"></i>Report Writing
+                            </span>
+                        </div>
+                        <!-- Project Metrics -->
+                        <div class="flex justify-between text-sm text-gray-500">
+                            <span><i class="fas fa-clock mr-1"></i>2 weeks</span>
+                            <span><i class="fas fa-bug mr-1"></i>12 vulnerabilities</span>
+                        </div>
+                    </div>
+                </div> <!-- entry -->
+
+                <div class="column entry project-item relative group glow-effect"> <!-- Added project item classes -->
+                    <!-- Project 2 -->
+                    <div class="entry__link"> <!-- Removed <a> tag and glightbox -->
+                        <div class="entry__thumb">
+                            <img src="images/folio/project_secure_health_records.jpg" alt="Secure Health Records Project"> <!-- Placeholder image -->
+                        </div>
+                        <div class="entry__info">
+                            <h4 class="entry__title project-title">Small Business Network Security</h4> <!-- Project title and classes -->
+                            <div class="entry__cat"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Completed</span></div> <!-- Project badge -->
+                        </div>
+                    </div>
+
+                    <div class="entry__desc-02"> <!-- Removed glightbox-desc class -->
+                        <p class="text-gray-600">Internal network vulnerability scan and penetration test for small business, identified risks and hardening measures.</p> <!-- Project description -->
+                         <!-- Technology Stack -->
+                         <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="project-tag bg-gray-100 text-gray-800">
+                                <i class="fab fa-windows mr-1"></i>Windows Server
+                            </span>
+                            <span class="project-tag bg-gray-100 text-gray-800">
+                                <i class="fas fa-network-wired mr-1"></i>Nessus
+                            </span>
+                            <span class="project-tag bg-gray-100 text-gray-800">
+                                <i class="fas fa-shield-alt mr-1"></i>Firewall Config
+                            </span>
+                        </div>
+                        <!-- Project Metrics -->
+                        <div class="flex justify-between text-sm text-gray-500">
+                            <span><i class="fas fa-clock mr-1"></i>1 week</span>
+                            <span><i class="fas fa-check mr-1"></i>50+ endpoints secured</span>
+                        </div>
+                    </div>
+                </div> <!-- entry -->
+
+                <div class="column entry project-item relative group glow-effect"> <!-- Added project item classes -->
+                    <!-- Project 3 -->
+                    <div class="entry__link"> <!-- Removed <a> tag and glightbox -->
+                        <div class="entry__thumb">
+                            <img src="images/folio/project_my_constituency.jpg" alt="My-Constituency Project"> <!-- Placeholder image -->
+                        </div>
+                        <div class="entry__info">
+                            <h4 class="entry__title project-title">Android App Security Testing</h4> <!-- Project title and classes -->
+                            <div class="entry__cat"><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Personal Project</span></div> <!-- Project badge -->
+                        </div>
+                    </div>
+
+                    <div class="entry__desc-03"> <!-- Removed glightbox-desc class -->
+                        <p class="text-gray-600">Penetration testing on Android mobile app, identified insecure data storage, API key exposure, documented findings.</p> <!-- Project description -->
+                         <!-- Technology Stack -->
+                         <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="project-tag bg-gray-100 text-gray-800">
+                                <i class="fab fa-android mr-1"></i>Android
+                            </span>
+                            <span class="project-tag bg-gray-100 text-gray-800">
+                                <i class="fas fa-mobile-alt mr-1"></i>Mobile Security
+                            </span>
+                            <span class="project-tag bg-gray-100 text-gray-800">
+                                <i class="fas fa-file-alt mr-1"></i>Documentation
+                            </span>
+                        </div>
+                        <!-- Project Metrics -->
+                        <div class="flex justify-between text-sm text-gray-500">
+                            <span><i class="fas fa-clock mr-1"></i>Ongoing</span>
+                            <span><i class="fas fa-user-graduate mr-1"></i>Learning Experience</span>
+                        </div>
+                    </div>
+                </div> <!-- entry -->
+
+
+            </div> <!-- folio entries -->
+
+
+        </section> <!-- end s-works -->
+
+        <!-- Certifications Section -->
+        <section class="mb-8 container mx-auto px-4 py-16" id="certifications">
+            <div class="row">
+                <div class="column xl-12">
+                    <div class="section-header" data-num="04">
+                        <h2 class="text-display-title">Certifications.</h2>
+                    </div> <!-- end section-header -->
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <ul class="list-disc list-inside">
+                    <li>CCNA - 200 - 301 - Networkers Home</li>
+                    <li>CCT (Certified Cybersecurity Technician) - Networkers Home</li>
+                    <li>CEH (Certified Ethical Hacker) - Networkers Home</li>
+                    <li>Linux Fundamentals - Networkers Home</li>
+                    <li>Fortigate Firewall - Networkers Home</li>
+                    <li>Python Scripting - Networkers Home</li>
+                    <li>PEN Testing- LPT - Networkers Home</li>
+                    <li>Bug Bounty Hunting - Networkers Home</li>
+                </ul>
+            </div>
+        </section>
+
+
+        <!-- # footer
+        ================================================== -->
+        <footer id="footer" class="s-footer target-section bg-gray-800 text-white py-8"> <!-- Added classes from code2 footer -->
+
+            <div class="row">
+                <div class="column lg-12">
+                    <div class="section-header light-on-dark" data-num="05">
+                        <h2 class="text-display-title">Contact Me.</h2>
+                    </div> <!-- end section-header -->
+                </div>
+            </div>
+
+            <div class="row s-footer__content container mx-auto px-4 text-center"> <!-- Added container and text-center classes -->
+
+                <div class="column xl-6 md-12 s-footer__block s-footer__about">
+                    <p class="attention-getter text-gray-400 mb-8">
+                        I'm open to discuss cybersecurity opportunities. Feel free to reach out!
+                    </p>
+                     <!-- Contact Form -->
+                    <form class="max-w-md mx-auto mb-8">
+                        <input type="email" placeholder="Your email" class="w-full mb-4 px-4 py-2 rounded-lg text-gray-800">
+                        <textarea placeholder="Message" class="w-full mb-4 px-4 py-2 rounded-lg h-32 text-gray-800"></textarea>
+                        <button class="btn-primary hover-tilt">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Message
+                        </button>
+                    </form>
+                </div> <!-- end section-footer__about -->
+
+                <div class="column xl-6 md-12 s-footer__block s-footer__site-links">
+                    <div class="row">
+                        <div class="column xl-4 lg-5 md-6 tab-12">
+                            <h5>Follow Me</h5>
+                            <ul class="link-list">
+                                <li><a href="https://linkedin.com/in/niteeshpujari" target="_blank">LinkedIn</a></li>
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="#">Instagram</a></li>
+                            </ul>
+                        </div>
+                        <div class="column xl-6 md-6 tab-12">
+                            <h5>Contact Me</h5>
+                            <ul class="link-list">
+                                <li><a href="mailto:niteesh.kvk@gmail.com">niteesh.kvk@gmail.com</a></li>
+                                <li><a href="tel:+918332883960">+91 8332883960</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                     <!-- Download Resume QR Code -->
+                    <div class="mt-8">
+                        <p class="mb-2">Scan to download resume</p>
+                        <a href="resume.pdf" download>
+                            <img src="images/qrcode-resume.png" alt="QR Code" class="w-32 h-32 mx-auto hover-tilt">
+                        </a>
+                    </div>
+                </div> <!-- end section-footer__site-links -->
+
+            </div> <!-- end section-footer__content -->
+
+
+            <div class="row s-footer__buttons">
+
+                <div class="column xl-6 tab-12">
+                    <a href="mailto:niteesh.kvk@gmail.com" class="btn btn--primary btn--large u-fullwidth">Message Me</a>
+                </div>
+
+                <div class="column xl-6 tab-12">
+                    <a href="#0" class="btn btn--stroke btn--large u-fullwidth">Download CV</a>
+                </div>
+
+            </div> <!-- end section-footer__buttons -->
+
+            <div class="row s-footer__bottom">
+
+                <div class="column xl-6 lg-12">
+                    <ul class="s-footer__social social-list">
+                        <li>
+                            <a href="https://linkedin.com/in/niteeshpujari" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M20,3H4C3.447,3,3,3.448,3,4v16c0,0.552,0.447,1,1,1h8.615v-6.96h-2.338v-2.725h2.338v-2c0-2.325,1.42-3.592,3.5-3.592 c0.699-0.002,1.399,0.034,2.095,0.107v2.42h-1.435c-1.128,0-1.348,0.538-1.348,1.325v1.735h2.697l-0.35,2.725h-2.348V21H20 c0.553,0,1-0.448,1-1V4C21,3.448,20.553,3,20,3z"></path></svg>
+                                <span class="u-screen-reader-text">LinkedIn</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809 c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793 c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05 c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032 c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028 c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22 c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z"></path></svg>
+                                <span class="u-screen-reader-text">Twitter</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M11.999,7.377c-2.554,0-4.623,2.07-4.623,4.623c0,2.554,2.069,4.624,4.623,4.624c2.552,0,4.623-2.07,4.623-4.624 C16.622,9.447,14.551,7.377,11.999,7.377L11.999,7.377z M11.999,15.004c-1.659,0-3.004-1.345-3.004-3.003 c0-1.659,1.345-3.003,3.004-3.003s3.002,1.344,3.002,3.003C15.001,13.659,13.658,15.004,11.999,15.004L11.999,15.004z"></path><circle cx="16.806" cy="7.207" r="1.078"></circle><path d="M20.533,6.111c-0.469-1.209-1.424-2.165-2.633-2.632c-0.699-0.263-1.438-0.404-2.186-0.42 c-0.963-0.042-1.268-0.054-3.71-0.054s-2.755,0-3.71,0.054C7.548,3.074,6.809,3.215,6.11,3.479C4.9,3.946,3.945,4.902,3.477,6.111 c-0.263,0.7-0.404,1.438-0.419,2.186c-0.043,0.962-0.056,1.267-0.056,3.71c0,2.442,0,2.753,0.056,3.71 c0.015,0.748,0.156,1.486,0.419,2.187c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45 c0.963,0.042,1.268,0.055,3.71,0.055s2.755,0,3.71-0.055c0.747-0.015,1.486-0.157,2.186-0.419c1.209-0.469,2.164-1.424,2.633-2.633 c0.263-0.7,0.404-1.438,0.419-2.186c0.043-0.962,0.056-1.267,0.056-3.71s0-2.753-0.056-3.71C20.941,7.57,20.801,6.819,20.533,6.111z M19.315,15.643c-0.007,0.576-0.111,1.147-0.311,1.688c-0.305,0.787-0.926,1.409-1.712,1.711c-0.535,0.199-1.099,0.303-1.67,0.311 c-0.95,0.044-1.218,0.055-3.654,0.055c-2.438,0-2.687,0-3.655-0.055c-0.569-0.007-1.135-0.112-1.669-0.311 c-0.789-0.301-1.414-0.923-1.719-1.711c-0.196-0.534-0.302-1.099-0.311-1.669c-0.043-0.95-0.053-1.218-0.053-3.654 c0-2.437,0-2.686,0.053-3.655c0.007-0.576,0.111-1.146,0.311-1.687c0.305-0.789,0.93-1.41,1.719-1.712 c0.534-0.198,1.1-0.303,1.669-0.311c0.951-0.043,1.218-0.055,3.655-0.055c2.437,0,2.687,0,3.654,0.055 c0.571,0.007,1.135,0.112,1.67,0.311c0.786,0.303,1.407,0.925,1.712,1.712c0.196,0.534,0.302,1.099,0.311,1.669 c0.043,0.951,0.054,1.218,0.054,3.655c0,2.436,0,2.698-0.043,3.654H19.315z"></path></svg>
+                                <span class="u-screen-reader-text">Instagram</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div> <!-- end section-footer__social -->
+
+                <div class="column xl-6 lg-12">
+                    <p class="ss-copyright">
+                        <span>© Copyright Niteesh Pujari 2024</span>
+                        <span>Design by <a href="https://styleshout.com/">StyleShout</a> Distribution by <a href="https://themewagon.com">ThemeWagon</a> | Modified & Integrated with Tailwind CSS</span> <!-- Added modification note -->
+                    </p>
+                </div>
+
+            </div> <!-- end section-footer__bottom -->
+
+            <div class="ss-go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5.536 21.886a1.004 1.004 0 0 0 1.033-.064l13-9a1 1 0 0 0 0-1.644l-13-9A1 1 0 0 0 5 3v18a1 1 0 0 0 .536.886z"></path></svg>
+                </a>
+                <span>Back To Top</span>
+            </div> <!-- end ss-go-top -->
+
+        </footer> <!-- end s-footer -->
+
+    </div> <!-- end page-wrap -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/particles.js"></script> <!-- Particles JS Script -->
+    <script>
+        document.addEventListener('mousemove', function(e){
+            document.querySelectorAll('.glow-effect').forEach(card =>{
+                let rect = card.getBoundingClientRect();
+                let x = e.clientX - rect.left;
+                let y = e.clientY - rect.top;
+                card.style.setProperty('--x', x + 'px');
+                card.style.setProperty('--y', y + 'px');
+            });
+        });
+
+        // Initialize skill progress bars
+        document.addEventListener('DOMContentLoaded', () => {
+            const skillMeters = document.querySelectorAll('.skill-meter');
+            skillMeters.forEach(meter => {
+                const progressBar = meter.querySelector('.skill-progress');
+                const progressWidth = meter.dataset.width;
+                progressBar.style.setProperty('--progress-width', `${progressWidth}%`);
+            });
+             /* particlesJS('particles-js', { // if you want to configure particles.js, uncomment and configure.
+                "particles": {
+                  "number": {
+                    "value": 80,
+                    "density": {
+                      "enable": true,
+                      "value_area": 800
+                    }
+                  },
+                  "color": {
+                    "value": "#3b82f6" // Blue color for particles
+                  },
+                  "shape": {
+                    "type": "circle",
+                    "stroke": {
+                      "width": 0,
+                      "color": "#000000"
+                    },
+                    "polygon": {
+                      "nb_sides": 5
+                    },
+                    "image": {
+                      "src": "img/github.svg",
+                      "width": 100,
+                      "height": 100
+                    }
+                  },
+                  "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                      "enable": false,
+                      "speed": 1,
+                      "opacity_min": 0.1,
+                      "sync": false
+                    }
+                  },
+                  "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                      "enable": false,
+                      "speed": 40,
+                      "size_min": 0.1,
+                      "sync": false
+                    }
+                  },
+                  "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#3b82f6", // Blue color for lines
+                    "opacity": 0.4,
+                    "width": 1
+                  },
+                  "move": {
+                    "enable": true,
+                    "speed": 3,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                      "enable": false,
+                      "rotateX": 600,
+                      "rotateY": 1200
+                    }
+                  }
+                },
+                "interactivity": {
+                  "detect_on": "canvas",
+                  "events": {
+                    "onhover": {
+                      "enable": true,
+                      "mode": "grab"
+                    },
+                    "onclick": {
+                      "enable": true,
+                      "mode": "push"
+                    },
+                    "resize": true
+                  },
+                  "modes": {
+                    "grab": {
+                      "distance": 140,
+                      "line_linked": {
+                        "opacity": 1
+                      }
+                    },
+                    "push": {
+                      "particles_nb": 4
+                    },
+                    "remove": {
+                      "particles_nb": 2
+                    }
+                  }
+                },
+                "retina_detect": true
+              }); */
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles if needed, you can add them here */
+
+.skill-meter {
+    @apply flex-1 bg-gray-200 h-2 rounded;
+}
+
+.hero-bg {
+    background: linear-gradient(135deg, #f3f0ff 0%, #e0cfff 100%); /* Example gradient, adjust as needed */
+}
+
+.btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md flex items-center justify-center; /* Flex added */
+}
+
+.btn-secondary {
+    @apply bg-white hover:bg-gray-100 text-gray-700 font-bold py-2 px-4 rounded-lg shadow-md flex items-center justify-center border border-gray-300; /* Flex and border added */
+}
+
+
+.nav-link {
+    @apply text-gray-700 hover:text-blue-600 transition-colors;
+}
+
+/* Add these new styles */
+.hover-tilt {
+    @apply transition-transform duration-300 hover:-rotate-1;
+}
+.skill-progress {
+    transition: width 1s ease-in-out; /* Smooth width transition */
+    width: 0; /* Start with 0 width for animation */
+}
+.animate-progress {
+    width: var(--progress-width); /* Animate to the data-width value */
+}
+.project-tag {
+    @apply inline-block px-2 py-1 rounded-full text-xs font-medium mr-2;
+}
+
+.tooltip {
+    @apply invisible absolute bg-gray-900 text-white px-3 py-2 rounded-lg text-sm;
+}
+
+.has-tooltip:hover .tooltip {
+    @apply visible; /* Show tooltip on hover */
+}
+
+/* Add these new styles */
+.certification-card {
+    @apply bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-2;
+}
+.glow-effect {
+    @apply relative overflow-hidden;
+}
+.glow-effect::before {
+    @apply content-[''] absolute top-0 left-0 w-full h-full opacity-0 transition-opacity duration-300;
+    background: radial-gradient(600px circle at var(--x) var(--y), rgba(59,130,246,0.1), transparent 40%);
+}
+.glow-effect:hover::before {
+    @apply opacity-100;
+}
+.animated-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-600 after:transition-all after:duration-300 hover:after:w-full;
+}
+
+/* Timeline Connector Line Animation */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
